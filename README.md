@@ -9,7 +9,7 @@
 
 ## 项目
 
-### 🔧 基于 YOLOv8 的钢带表面缺陷检测 · [仓库](https://github.com/shinyakmes/neu-det-steel-defect-yolo)
+### 🔧 基于 YOLOv8 的钢带表面缺陷检测 · [仓库](https://github.com/shinyakmes/yoloooooo))
 
 用 NEU-DET 公开数据集（6 类缺陷、1770 张）训练检测模型，全流程自主py脚本。
 
