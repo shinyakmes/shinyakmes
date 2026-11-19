@@ -1,16 +1,51 @@
-## Hi there 👋
+# 李深源 · 机器视觉 / 嵌入式
 
-<!--
-**shinyakmes/shinyakmes** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+本科在读（广西民族大学 · 智能制造工程，2027.07 毕业），方向是**机器视觉应用 + 嵌入式控制**。
+在机器视觉公司做过半年现场：设备部署、相机标定、误判处理、深度学习数据侧闭环。
 
-Here are some ideas to get you started:
+> 卡了兄弟，出门赚钱
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 项目
+
+### 🔧 基于 YOLOv8 的钢带表面缺陷检测 · [仓库](https://github.com/shinyakmes/neu-det-steel-defect-yolo)
+
+用 NEU-DET 公开数据集（6 类缺陷、1770 张）训练检测模型，全流程自主py脚本。
+
+| 指标 | 值 |
+|---|---|
+| 测试集 mAP@0.5 | **0.8055**（独立测试集 175 张 / 402 框） |
+| 单帧推理 | 16.5 ms（batch=1）／2.96 ms 每图（batch=16） |
+| 框级漏检率 | 22.6% @conf 0.25 ／ 7.0% @conf 0.05 |
+
+- 自己写 VOC→YOLO 转换 + 分层划分（固定种子，可复现）
+- 发现框架返回的 precision/recall 是 F1 最优点、不是指定阈值点，于是自写匹配器重算工作点
+- 做了 640 / 320 分辨率对照：320 用一半算力拿到同等精度
+- 18 条踩坑记录全在仓库 `docs/实验记录.md`
+
+### 🎯 Halcon 车牌识别 → OpenCV 复现（进行中）
+
+课程项目用 **Halcon** 做过完整流程（定位 → 分割 → 识别）。
+现在用 OpenCV/Python 重写一遍，目标是能说清**每个 Halcon 算子对应哪个 OpenCV 函数**
+（`reduce_domain` ↔ numpy 切片、`find_shape_model` ↔ `cv2.matchTemplate`…）。
+
+### 🌱 温室大棚环境监测与联动控制（本科毕设 · 在研）
+
+STM32 采集 → LoRa 组网 → ESP32 网关 → MQTT 云平台 + 墨水屏就地显示。
+
+## 技能
+
+| 类别 | 内容 |
+|---|---|
+| 机器视觉 | Halcon（滤波 / ROI / 阈值 / 形态学 / 模板匹配）、OpenCV、相机标定与手眼标定 |
+| 深度学习 | PyTorch + Ultralytics 训练 YOLOv8；数据审计、划分、指标评测、工作点分析 |
+| 编程 | Python、C++、C |
+| 嵌入式 | STM32、ESP32、PLC（课程实验）、ROS（基础仿真） |
+| 其他 | UG NX 三维建模、MATLAB、Git |
+
+## 联系
+
+- 邮箱：m13257740886@163.com
+- 求职方向：机器视觉应用工程师 / 视觉算法（含部署与调试）
+- 可到岗时间：随时
